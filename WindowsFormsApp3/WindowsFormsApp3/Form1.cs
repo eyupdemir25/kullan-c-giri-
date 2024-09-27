@@ -26,7 +26,7 @@ namespace WindowsFormsApp3
         {
 
         }
-
+        int giriş_hakkı = 3;
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -40,16 +40,34 @@ namespace WindowsFormsApp3
             if (textBox2.Text!="123")
             {
                 hatalı = 1;
+                giriş_hakkı--;
             }
-            if (hatalı==0)
+
+            if (giriş_hakkı>0)
             {
-                MessageBox.Show("başarılı");
-                label4.Visible = false;
+                if (hatalı == 0)
+                {
+                    label4.Visible = false;
+                    MessageBox.Show(" giriş başarılı");
+
+                }
+                else
+                {
+                    MessageBox.Show(" şifre hatalı, giriş hakınız:"+giriş_hakkı);
+                }
             }
             else
             {
-                MessageBox.Show("hatalı");
+                MessageBox.Show("giriş hakkınız bitti");
+                button1.Enabled = false;
+
+                textBox1.Text = "";
+                textBox2.Text = "";
+
+                textBox1.Enabled = false;
+                textBox2.Enabled = false;
             }
+            
 
 
             /* if (textBox1.Text=="admin")
